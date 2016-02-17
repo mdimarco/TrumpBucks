@@ -43,8 +43,8 @@ function addTweetsToDOM(rawResponse) {
 	cleanedTweets.forEach(function (each) {
 		trumpCounter += 1
 		var id = "tb-"+trumpCounter;
-		createTrumpBuck(id, each.text);
-		animateTrumpBuck("#"+id, Math.round( Math.random()*200 - 100), each.text);
+		createTrumpBuck(id, each.text.slice(0,150));
+		animateTrumpBuck("#"+id, Math.round( Math.random()*200 - 100), each.text.slice(0,150));
 	});
 
 }
