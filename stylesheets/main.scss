@@ -16,6 +16,10 @@ body {
   	margin: 0;
 }
 
+.fa {
+	font-size: 75px;
+}
+
 #navbar {
 	position: fixed;
     width: 100%;
@@ -27,15 +31,15 @@ body {
 }
 
 .trump-buck {
-	border: 3px solid rgba(0,0,0,.2);
+	border: 1em solid rgba(0,0,0,.2);
 	position: absolute;
     top: 10em;
     display: inline-block;
-    width: 5em;
-    height: 2em;
+    width: 25em;
+    height: 12em;
     background-color: green;
     left: 10em;
-
+    transform: scale(.2);
 
     &:hover{
     	transform: scale(5);
@@ -44,37 +48,50 @@ body {
 
 .trump-sign {
 	position: relative;
-    top: .5em;
+    top: 3.5em;
     text-align: center;
     display: inline-block;
-    width: 1.66667em;
+    width: 9em;
     height: 2em;
     color: $trump-text-green;
 }
 
 .tweet-container {
 	display: inline-block;
-    width: 4.66667em;
+    width: 20em;
     font-size: 5px;
     height: 2em;
 }
 
 .trump-pic {
 	background-image: url("media/trump.jpg");
-    background-size: 4.66667em;
+    background-size: 20em;
     background-repeat: no-repeat;
-    width: 4.5em;
-    height: 5em;
-    border-radius: 3em;
+    width: 20em;
+    height: 20em;
+    border-radius: 10em;
     position: absolute;
-    top: 0.3em;
+    top: 6em;
 }
 
 .trump-text {
+	-webkit-font-smoothing:antialiased;
 	white-space: nowrap;
     position: absolute;
     top: 3.7em;
     left: -2.2em;
     color: $trump-text-green;
     font-family: cursive;
+    font-size: 25px;
+}
+
+.tweet-text {
+	text-align: center;
+	font-size: 25px;
+	-webkit-font-smoothing:antialiased;
+    -webkit-text-stroke: 1px rgba(0,0,0,0.1);
+    -webkit-text-size-adjust:none;
+    text-size-adjust:none;
+
+
 }

@@ -12,8 +12,7 @@ window.addEventListener('load', function () {
 
 
 var seenTweets = {};
-var currentTweetsOnDom = [];
-
+var trumpCounter = 0;
 
 function pollTweets () {
 	getTweets(addTweetsToDOM);
@@ -42,10 +41,10 @@ function getTweets (responseCallback) {
 function addTweetsToDOM(rawResponse) {
 	var cleanedTweets = cleanResponse(rawResponse);
 	cleanedTweets.forEach(function (each) {
-		var id = "tb-"+currentTweetsOnDom.length;
-		currentTweetsOnDom.push(id);
+		trumpCounter += 1
+		var id = "tb-"+trumpCounter;
 		createTrumpBuck(id, each.text);
-		animateTrumpBuck("#"+id, Math.round( Math.random()*200 - 100));
+		animateTrumpBuck("#"+id, Math.round( Math.random()*200 - 100), each.text);
 	});
 
 }
@@ -54,12 +53,16 @@ function addTweetsToDOM(rawResponse) {
 function cleanResponse (rawResponse) {
 	var parsedResponse = JSON.parse(rawResponse);
 	var filteredResponse = parsedResponse.filter(function(each) { return !seenTweets[each.id];}); 
+	filteredResponse = filteredResponse.slice(0,25);
 	filteredResponse.forEach(function(each){ seenTweets[each.id] = true});
 	return filteredResponse;
 }
 
+//Adds trump buck to the dom, and handles clicking / displaying the tweet
 function createTrumpBuck(id, text) {
-	$("body").append('<div id="'+id+'" class="trump-buck"><div class="trump-sign">$</div><div class="tweet-container"><div class="trump-pic"><p class="trump-text"> E Pluribus Trumpum</p></div></div><div class="trump-sign">$</div></div>');
+	$("body").append('<div id="'+id+'" class="trump-buck"><div class="trump-sign"><i class="fa fa-usd"></i></div><div class="tweet-container"><div class="trump-pic"><p class="trump-text"> E Pluribus Trumpum</p></div></div><div class="trump-sign"><i class="fa fa-usd"></i></div></div>');
 	$("#"+id).css("left", Math.round( Math.random()*100 )+"%");
 	$("#"+id).css("top", "-50px");
+
+
 }

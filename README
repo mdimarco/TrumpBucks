@@ -1,2 +1,4 @@
-Animations done with the help of GSAP http://greensock.com/gsap
+Animations done with the help of GSAP http://greensock.com/gsap ( learned a new library :)
+$ SVG's courtesy of font-awesome https://fortawesome.github.io/Font-Awesome/
 
+Hacked my way through fighting text aliasing by building 5x bigger trump bucks, scaling down by 5, then resizing to regular size on hover. Oddly enough this issue was only difficult in chrome
