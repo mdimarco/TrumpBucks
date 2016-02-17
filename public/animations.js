@@ -33,6 +33,8 @@
 			$(id+" .trump-sign").css("display","none");
 			$(id+" .tweet-container").css("display","none");
 			$(id).append('<p class="tweet-text">'+text+'</p>');
+			$(id).off('click');
+			$(id).css('cursor', 'initial');
 	});
 	}
 

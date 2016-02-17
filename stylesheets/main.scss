@@ -40,7 +40,7 @@ body {
     background-color: green;
     left: 10em;
     transform: scale(.2);
-
+    cursor: pointer;
     &:hover{
     	transform: scale(5);
     }
