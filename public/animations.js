@@ -7,7 +7,7 @@
 		var buck = $(id);
 
 		//Main animations
-		var fall = TweenLite.to(buck, 5, {z:.001, force3D:true, top:"90%", onComplete: dissapear, onCompleteParams: [buck] });
+		var fall = TweenLite.to(buck, Math.round(Math.random()*10+5), {z:.001, force3D:true, top:"80%", onComplete: dissapear, onCompleteParams: [buck] });
 		var rotate = TweenLite.to(buck, 5, { z:.001, force3D:true, rotation: "+="+rotate, ease: Linear.easeNone });
 
 		//Reversals animations for hover

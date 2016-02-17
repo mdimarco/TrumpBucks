@@ -1,11 +1,17 @@
 
-$animation-time: 10s;
-$buck-width: 5em;
-$buck-height: 2em;
+$buck-width: 25em;
+$buck-height: 12em;
+$text-size: 25px;
+
 $trump-text-green: #3FAD48;
+$black: #101010;
 
+$sign-width: .36*$buck-width;
+$sign-height: .1666*$buck-height;
+$center-width: .8*$buck-width;
+$pic-height: 1.6*$buck-height;
 
-
+$fa-size: 3*$text-size;
 
 
 body {
@@ -17,7 +23,7 @@ body {
 }
 
 .fa {
-	font-size: 75px;
+	font-size: $fa-size;
 }
 
 #navbar {
@@ -27,22 +33,26 @@ body {
     text-align: center;
     font-size: 20px;
     font-weight: 100;
-    font-family: sans-serif
+    font-family: sans-serif;
+    z-index: 100;
 }
+
+
+
 
 .trump-buck {
 	border: 1em solid rgba(0,0,0,.2);
 	position: absolute;
-    top: 10em;
-    display: inline-block;
-    width: 25em;
-    height: 12em;
-    background-color: green;
+    top: 10em;    
     left: 10em;
+    display: inline-block;
+    width: $buck-width;
+    height: $buck-height;
+    background-color: green;
     transform: scale(.2);
     cursor: pointer;
     &:hover{
-    	transform: scale(5);
+    	transform: scale(1);
     }
 }
 
@@ -51,47 +61,41 @@ body {
     top: 3.5em;
     text-align: center;
     display: inline-block;
-    width: 9em;
-    height: 2em;
+    width: $sign-width;
+    height: $sign-height;
     color: $trump-text-green;
 }
 
 .tweet-container {
 	display: inline-block;
-    width: 20em;
+    width: $center-width;
     font-size: 5px;
-    height: 2em;
 }
 
 .trump-pic {
 	background-image: url("media/trump.jpg");
-    background-size: 20em;
+    background-size: $center-width;
     background-repeat: no-repeat;
-    width: 20em;
-    height: 20em;
+    width: $center-width;
+    height: $pic-height;
     border-radius: 10em;
-    position: absolute;
-    top: 6em;
+    position: relative;
 }
 
 .trump-text {
-	-webkit-font-smoothing:antialiased;
 	white-space: nowrap;
-    position: absolute;
+    position: relative;
     top: 3.7em;
     left: -2.2em;
     color: $trump-text-green;
     font-family: cursive;
-    font-size: 25px;
+    font-size: $text-size;
 }
 
 .tweet-text {
 	text-align: center;
-	font-size: 25px;
-	-webkit-font-smoothing:antialiased;
-    -webkit-text-stroke: 1px rgba(0,0,0,0.1);
-    -webkit-text-size-adjust:none;
-    text-size-adjust:none;
+	font-size: $text-size;
+    color: $black;
 }
 
 .error-msg {

@@ -1,3 +1,6 @@
+/*global window, $, createTrumpBuck */
+
+
 /*
     trump.js
     An implementation of the TrumpFeed project.
@@ -22,7 +25,7 @@ var trumpCounter = 0;
 
 function pollTweets () {
 	getTweets(addTweetsToDOM);
-	setTimeout(pollTweets, 3000)
+	setTimeout(pollTweets, 3000);
 }
 
 
@@ -52,7 +55,7 @@ function addTweetsToDOM(rawResponse) {
 	cleanedTweets.forEach(function (each) {
 		trumpCounter += 1
 		var id = "tb-"+trumpCounter;
-		createTrumpBuck(id, each.text.slice(0,150));
+		createTrumpBuck(id);
 		animateTrumpBuck("#"+id, Math.round( Math.random()*200 - 100), each.text.slice(0,150));
 	});
 
@@ -68,10 +71,10 @@ function cleanResponse (rawResponse) {
 }
 
 //Adds trump buck to the dom, and handles clicking / displaying the tweet
-function createTrumpBuck(id, text) {
+function createTrumpBuck(id) {
 	$("body").append('<div id="'+id+'" class="trump-buck"><div class="trump-sign"><i class="fa fa-usd"></i></div><div class="tweet-container"><div class="trump-pic"><p class="trump-text"> E Pluribus Trumpum</p></div></div><div class="trump-sign"><i class="fa fa-usd"></i></div></div>');
-	$("#"+id).css("left", Math.round( Math.random()*100 )+"%");
-	$("#"+id).css("top", "-50px");
+	$("#"+id).css("left", Math.round( Math.random()*100-20 )+"%");
+	$("#"+id).css("top", Math.round( Math.random()*200-250)+"px");
 
 
 }
