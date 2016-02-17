@@ -2,3 +2,7 @@ Animations done with the help of GSAP http://greensock.com/gsap ( learned a new 
 $ SVG's courtesy of font-awesome https://fortawesome.github.io/Font-Awesome/
 
 Hacked my way through fighting text aliasing by building 5x bigger trump bucks, scaling down by 5, then resizing to regular size on hover. Oddly enough this issue was only difficult in chrome
+
+TODO: Create capability on backend of searching trump tweets to avoid cross origin request
+TODO: Rotate animation on trump-buck click to make tweet appear as "back" of the trump-buck
+
