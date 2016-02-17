@@ -6,6 +6,12 @@
 // This code will be executed when the page finishes loading
 window.addEventListener('load', function () {
    pollTweets();
+   setTimeout(function(){
+		if(trumpCounter == 0){
+			$("#navbar").append("<p class='error-msg'>Note: If the trump-bucks are not loading, try using http:// in the browser header instead of https://</p>");
+		}
+	},2000);
+
 }, false);
 
 // Add more supporting code here!
@@ -37,11 +43,7 @@ function getTweets (responseCallback) {
 	}, false);
 
 	request.send();
-	setTimeout(function(){
-		if(trumpCounter == 0){
-			$("#navbar").append("<p>Note: If the trump-bucks are not loading, try using http:// in the browser header instead of https://</p>");
-		}
-	},2000);
+	
 }
 
 //Clean and then add/animate retrieved tweets
