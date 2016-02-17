@@ -8,7 +8,7 @@ window.addEventListener('load', function () {
    pollTweets();
    setTimeout(function(){
 		if(trumpCounter == 0){
-			$("#navbar").append("<p class='error-msg'>Note: If the trump-bucks are not loading, try using http:// in the browser header instead of https://</p>");
+			$("#navbar").append('<p class="error-msg">Note: If the trump-bucks are not loading, try using http:// in the browser header instead of https://</p>');
 		}
 	},2000);
 
