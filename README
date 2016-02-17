@@ -1,3 +1,11 @@
+
+To Start up app: npm start
+To Edit app: 
+	npm start
+	jade --watch index.jade
+	sass --watch main.scss
+in the folders containing said files
+
 Animations done with the help of GSAP http://greensock.com/gsap ( learned a new library :)
 $ SVG's courtesy of font-awesome https://fortawesome.github.io/Font-Awesome/
 
