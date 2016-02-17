@@ -32,10 +32,16 @@ function getTweets (responseCallback) {
 			responseCallback( request.responseText );
 		} else {
 			console.error(request.status);
-			$("#navbar").append("<p>Note: If the trump-bucks are not loading, try using http:// in the browser header instead of https://</p>");
+			
 		}
 	}, false);
+
 	request.send();
+	setTimeout(function(){
+		if(trumpCounter == 0){
+			$("#navbar").append("<p>Note: If the trump-bucks are not loading, try using http:// in the browser header instead of https://</p>");
+		}
+	},2000);
 }
 
 //Clean and then add/animate retrieved tweets
