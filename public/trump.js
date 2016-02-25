@@ -56,7 +56,7 @@ function addTweetsToDOM(rawResponse) {
 		trumpCounter += 1
 		var id = "tb-"+trumpCounter;
 		createTrumpBuck(id);
-		animateTrumpBuck("#"+id, Math.round( Math.random()*200 - 100), each.text.slice(0,150));
+		animateTrumpBuck("#"+id, Math.round( Math.random()*200 - 100), each);
 	});
 
 }

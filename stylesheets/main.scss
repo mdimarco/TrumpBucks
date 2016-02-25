@@ -2,9 +2,11 @@
 $buck-width: 25em;
 $buck-height: 12em;
 $text-size: 25px;
+$tweet-text-size: 20px;
 
 $trump-text-green: #3FAD48;
 $black: #101010;
+$white: #fefefe;
 
 $sign-width: .36*$buck-width;
 $sign-height: .1666*$buck-height;
@@ -13,6 +15,9 @@ $pic-height: 1.6*$buck-height;
 
 $fa-size: 3*$text-size;
 
+$pic-size: 3em;
+$pic2-3: (2/3)*$pic-size;
+$pic1-3: (1/3)*$pic-size;
 
 body {
 	width: 100vw;
@@ -43,6 +48,7 @@ body {
 .trump-buck {
 	border: 1em solid rgba(0,0,0,.2);
 	position: absolute;
+    z-index: 0;
     top: 10em;    
     left: 10em;
     display: inline-block;
@@ -94,8 +100,31 @@ body {
 
 .tweet-text {
 	text-align: center;
-	font-size: $text-size;
-    color: $black;
+	font-size: $tweet-text-size;
+    color: $white;
+    float: left;
+}
+
+
+
+
+
+.tweet-pic {
+    width: $pic-size;
+    height: $pic-size;
+    display: inline-block;
+    border: 1px solid white;
+    border-radius: .2em;
+    float: left;
+    margin: $pic1-3 0 0 $pic1-3;
+}
+
+.tweet-name {
+    display: inline;
+    float: left;
+    clear: right;
+    margin: $pic2-3 $pic1-3 0 $pic1-3;
+    color: $white;
 }
 
 .error-msg {
