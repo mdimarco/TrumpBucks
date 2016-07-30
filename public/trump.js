@@ -31,29 +31,17 @@ function pollTweets () {
 
 //Send AJAX request to retrieve twitter rawtext
 function getTweets (responseCallback) {
-	var url = "http://ec2-54-201-84-161.us-west-2.compute.amazonaws.com";
-	var path = "/feed/mdimarco";
-
-	var request = new XMLHttpRequest();
-	request.open('GET',url+path,true);
-	request.addEventListener('load', function (e) { 
-		if (request.status === 200) {
-			responseCallback( request.responseText );
-		} else {
-			console.error(request.status);
-			
-		}
-	}, false);
-
-	request.send();
-	
+	$.get("/poll_tweets", function(rawResponse) {
+		console.log(rawResponse)
+		responseCallback(rawResponse);
+	})
 }
 
 //Clean and then add/animate retrieved tweets
 function addTweetsToDOM(rawResponse) {
 	var cleanedTweets = cleanResponse(rawResponse);
 	cleanedTweets.forEach(function (each) {
-		trumpCounter += 1
+		trumpCounter += 1;
 		var id = "tb-"+trumpCounter;
 		createTrumpBuck(id);
 		animateTrumpBuck("#"+id, Math.round( Math.random()*200 - 100), each);
@@ -63,10 +51,9 @@ function addTweetsToDOM(rawResponse) {
 
 //Parse and clean response from AJAX request, 
 function cleanResponse (rawResponse) {
-	var parsedResponse = JSON.parse(rawResponse);
-	var filteredResponse = parsedResponse.filter(function(each) { return !seenTweets[each.id];}); 
+	var filteredResponse = rawResponse.filter(function(each) { return !seenTweets[each.id] || true;}); 
 	filteredResponse = filteredResponse.slice(0,25);
-	filteredResponse.forEach(function(each){ seenTweets[each.id] = true});
+	filteredResponse.forEach(function(each){ seenTweets[each.id] = true;});
 	return filteredResponse;
 }
 
