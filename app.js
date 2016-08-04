@@ -18,7 +18,7 @@ app.get('/', function(ignore, res) {
 
 app.get('/poll_tweets', function(req, res) {
 	console.log(req.query)
-	twitter_poll('donald trump OR trump', req.query.max_id, req.query.count, function(tweets) {
+	twitter_poll('donald trump OR trump -filter:retweets', req.query.max_id, req.query.count, function(tweets) {
 		res.send(tweets);
 	});
 });
