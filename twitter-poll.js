@@ -25,16 +25,30 @@ function formatTweets(rawText) {
 	return JSON.parse(rawText).statuses;
 }
 
-function poll(searchTerm, callback) {
+function fixCount(count) {
+	if(count > 25) {
+		return 25;
+	}
+	if(count < 5) {
+		return 5;
+	}
+	return count;
+}
+
+function poll(searchTerm, maxId, count, callback) {
+	count = fixCount(count);
 	if(!accessToken) {
 		console.log("ERROR: No access token to poll with");
 	} else {
+		if(maxId){
+			searchTerm += "&max_id="+maxId;
+		}
 		var query = encodeURI(searchTerm);
 		var options = { 
 			headers: {
 				Authorization: 'Bearer '+accessToken 
 			},
-			url: 'https://api.twitter.com/1.1/search/tweets.json?q='+query
+			url: 'https://api.twitter.com/1.1/search/tweets.json?count='+count+'&result_type=mixed&q='+query
 		};
 
 		request.get(options, function(err, resp, body){

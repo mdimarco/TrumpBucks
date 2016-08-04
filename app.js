@@ -1,7 +1,6 @@
 var express = require('express');
 var app = express();
 var path = require('path');
-var request = require('request');
 
 var consumerKey = process.env.TWITTER_CONSUMER_KEY;
 var consumerSecret = process.env.TWITTER_CONSUMER_SECRET;
@@ -18,7 +17,8 @@ app.get('/', function(ignore, res) {
 
 
 app.get('/poll_tweets', function(req, res) {
-	twitter_poll('donald trump', function(tweets) {
+	console.log(req.query)
+	twitter_poll('donald trump OR trump', req.query.max_id, req.query.count, function(tweets) {
 		res.send(tweets);
 	});
 });

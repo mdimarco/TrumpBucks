@@ -17,22 +17,32 @@ window.addEventListener('load', function () {
 
 }, false);
 
-// Add more supporting code here!
-
 
 var seenTweets = {};
 var trumpCounter = 0;
+//After every poll, move the max id back to avoid polling duplicates
+var maxId = '';
+
+
 
 function pollTweets () {
 	getTweets(addTweetsToDOM);
 	setTimeout(pollTweets, 3000);
 }
 
+function getMaxId() {
+	return maxId ? "max_id=" + maxId : '';
+}
+
+//Number of tweets to ask for
+function getCount() {
+	return "count=" + Math.round($(window).width() / 80);
+}
 
 //Send AJAX request to retrieve twitter rawtext
 function getTweets (responseCallback) {
-	$.get("/poll_tweets", function(rawResponse) {
-		console.log(rawResponse)
+	var query = "/poll_tweets?"+getCount()+"&"+getMaxId();
+	$.get(query, function(rawResponse) {
 		responseCallback(rawResponse);
 	})
 }
@@ -51,8 +61,13 @@ function addTweetsToDOM(rawResponse) {
 
 //Parse and clean response from AJAX request, 
 function cleanResponse (rawResponse) {
-	var filteredResponse = rawResponse.filter(function(each) { return !seenTweets[each.id] || true;}); 
-	filteredResponse = filteredResponse.slice(0,25);
+	var filteredResponse = rawResponse.filter(function(each) { return !seenTweets[each.id];}); 
+	if(filteredResponse.length) {
+		maxId = filteredResponse[filteredResponse.length-1].id_str;
+	}
+	if(filteredResponse.length > 25) {
+		filteredResponse = filteredResponse.slice(0,25);
+	}
 	filteredResponse.forEach(function(each){ seenTweets[each.id] = true;});
 	return filteredResponse;
 }
@@ -62,6 +77,4 @@ function createTrumpBuck(id) {
 	$("body").append('<div id="'+id+'" class="trump-buck"><div class="trump-sign"><i class="fa fa-usd"></i></div><div class="tweet-container"><div class="trump-pic"><p class="trump-text"> E Pluribus Trumpum</p></div></div><div class="trump-sign"><i class="fa fa-usd"></i></div></div>');
 	$("#"+id).css("left", Math.round( Math.random()*100-20 )+"%");
 	$("#"+id).css("top", Math.round( Math.random()*200-250)+"px");
-
-
 }

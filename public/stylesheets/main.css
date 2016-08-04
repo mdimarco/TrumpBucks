@@ -1,4 +1,4 @@
-<html><head><title>Stump The Trump</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/><style>body {
+body {
   width: 100vw;
   height: 100vh;
   background: url("../media/trumpwall.jpg") no-repeat center center fixed;
@@ -91,6 +91,3 @@
   color: red; }
 
 /*# sourceMappingURL=main.css.map */
-</style><script src="https://code.jquery.com/jquery-2.2.0.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/plugins/CSSPlugin.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenLite.min.js"></script></head><body>
-
-<script src="animations.js"></script><script src="trump.js"></script></body></html>

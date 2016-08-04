@@ -2,7 +2,7 @@
   "name": "trumpbucks",
   "version": "1.0.0",
   "description": "Animations done with the help of GSAP http://greensock.com/gsap ( learned a new library :) $ SVG's courtesy of font-awesome https://fortawesome.github.io/Font-Awesome/",
-  "main": "animations.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js"
