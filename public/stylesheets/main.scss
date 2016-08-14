@@ -26,6 +26,7 @@ body {
 	background:  url("../media/trumpwall.jpg") no-repeat center center fixed; 
   	background-size: cover;
   	margin: 0;
+    overflow-y: hidden;
 }
 
 .fa {
@@ -105,9 +106,6 @@ body {
     color: $white;
     float: left;
 }
-
-
-
 
 
 .tweet-pic {

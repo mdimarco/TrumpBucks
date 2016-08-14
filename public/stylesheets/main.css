@@ -4,7 +4,8 @@ body {
   min-height: 750px;
   background: url("../media/trumpwall.jpg") no-repeat center center fixed;
   background-size: cover;
-  margin: 0; }
+  margin: 0;
+  overflow-y: hidden; }
 
 .fa {
   font-size: 75px; }

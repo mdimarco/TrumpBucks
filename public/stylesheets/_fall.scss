@@ -4,11 +4,3 @@
 	60% { transform: rotate(-45deg);   }
 	100% { transform: rotate(45deg);  }
 }
-@keyframes fall { 
-	0% { 
-		margin-top: 0%;
-	}
-	100% { 
-		margin-top: 50%; 
-	}
-}

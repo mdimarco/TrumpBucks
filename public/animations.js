@@ -1,56 +1,55 @@
 /*global $, TweenLite, Linear */
 
-	var remove = function (buck) {
-		buck.remove();
-	};
+var remove = function (buck) {
+	buck.remove();
+};
 
-	var dissapear = function (buck) {
-		TweenLite.to(buck, 3, {opacity:0, delay:2, onComplete:remove, onCompleteParams:buck });
-	};
+var dissapear = function (buck) {
+	TweenLite.to(buck, 3, {opacity:0, delay:2, onComplete:remove, onCompleteParams:buck });
+};
 
-	var animateTrumpBuck = function(id, rotateDeg, tweet) {
-		var buck = $(id);
+var animateItem = function(itemName, id, rotateDeg, tweet) {
+	var buck = $(id);
 
-		//Main animations
-		var fall = TweenLite.to(buck, Math.round(Math.random()*10+5), { top:"80%", onComplete: dissapear, onCompleteParams: [buck] });
-		var rotate = TweenLite.to(buck, 5, { rotation: "+="+rotateDeg, ease: Linear.easeNone });
+	//Main animations
+	var fall = TweenLite.to(buck, Math.round(Math.random()*10+5), { top:"80%", onComplete: dissapear, onCompleteParams: [buck] });
+	var rotate = TweenLite.to(buck, 5, { rotation: "+="+rotateDeg, ease: Linear.easeNone });
 
-		//Reversals animations for hover
-		var flatten, scaleUp;
-	
-		buck.hover( function() {
-			fall.pause();
-			rotate.pause();
+	//Reversals animations for hover
+	var flatten, scaleUp;
 
-			flatten = TweenLite.to($(this), 1, { 'z-index':100, force3D:true, rotation: "0", ease: Linear.easeNone, onReverseComplete:function(){fall.play();rotate.play();} });
-			scaleUp = TweenLite.to($(this), 1, { 'z-inxex':100, force3D:true, scale: 1, onComplete:addText, onCompleteParams: [id, tweet] });
+	buck.hover( function() {
+		fall.pause();
+		rotate.pause();
 
-		}, function(){
+		flatten = TweenLite.to($(this), 1, { 'z-index':100, force3D:true, rotation: "0", ease: Linear.easeNone, onReverseComplete:function(){fall.play();rotate.play();} });
+		scaleUp = TweenLite.to($(this), 1, { 'z-index':100, force3D:true, scale: 1, onComplete:addText, onCompleteParams: [id, tweet, itemName] });
 
-			flatten.reverse();
-			scaleUp.reverse();
-			
-		});
-	};
+	}, function(){
 
-	var addText = function (id, tweet) {
-
-		var text = tweet.text.slice(0,150).replace("/\n/g", " ");
-		var name = tweet.user.screen_name;
-		var pic = tweet.user.profile_image_url;
-
-		$(id).on('click', function () {
-			$(id+" .trump-sign").css("display","none");
-			$(id+" .tweet-container").css("display","none");
-			$(id).append('<div class="profile">');
-				$(id).append('<img class="tweet-pic" src="'+pic+'">');
-				$(id).append('<p class="tweet-name">'+name+'</p>');
-			$(id).append('</div>');
-			$(id).append('<p class="tweet-text">'+text+'</p>');
-			$(id).off('click');
-			$(id).css('cursor', 'initial');
+		flatten.reverse();
+		scaleUp.reverse();
+		
 	});
-	};
+};
+
+var addText = function (id, tweet, itemName) {
+
+	var text = tweet.text.slice(0,150).replace("/\n/g", " ");
+	var name = tweet.user.screen_name;
+	var pic = tweet.user.profile_image_url;
+
+	$(id).on('click', function () {
+		var backSource = $("#"+itemName+"-template-back").html();
+		var backTemplate = Handlebars.compile(backSource);
+		var back = backTemplate({text,name,pic});
+
+		$(id+" .front").css("display","none");
+		$(id+" .back").append(back);
+
+		$(id).off('click');
+		$(id).css('cursor', 'initial');
+	});
+};
 
 
-	
