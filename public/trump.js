@@ -74,7 +74,11 @@ function cleanResponse (rawResponse) {
 
 //Adds trump buck to the dom, and handles clicking / displaying the tweet
 function createTrumpBuck(id) {
-	$("body").append('<div id="'+id+'" class="trump-buck"><div class="trump-sign"><i class="fa fa-usd"></i></div><div class="tweet-container"><div class="trump-pic"><p class="trump-text"> E Pluribus Trumpum</p></div></div><div class="trump-sign"><i class="fa fa-usd"></i></div></div>');
-	$("#"+id).css("left", Math.round( Math.random()*100-20 )+"%");
+	var buckSource = $("#trump-buck-template").html();
+	var buckTemplate = Handlebars.compile(buckSource);
+	var buck = buckTemplate({id});
+	$("body").append(buck);
+	$("#"+id).css("left", Math.round( Math.random()*100-20)+"%");
 	$("#"+id).css("top", Math.round( Math.random()*200-250)+"px");
 }
+
