@@ -59,6 +59,7 @@ body {
     background-color: green;
     transform: scale(.2);
     cursor: pointer;
+    overflow: hidden;
     &:hover{
     	transform: scale(1);
     }

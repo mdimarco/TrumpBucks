@@ -31,7 +31,8 @@ body {
   height: 12em;
   background-color: green;
   transform: scale(0.2);
-  cursor: pointer; }
+  cursor: pointer;
+  overflow: hidden; }
   .trump-buck:hover {
     transform: scale(1); }
 

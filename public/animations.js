@@ -23,7 +23,7 @@ var animateItem = function(itemName, id, rotateDeg, tweet) {
 		rotate.pause();
 
 		flatten = TweenLite.to($(this), 1, { 'z-index':100, force3D:true, rotation: "0", ease: Linear.easeNone, onReverseComplete:function(){fall.play();rotate.play();} });
-		scaleUp = TweenLite.to($(this), 1, { 'z-index':100, force3D:true, scale: 1, onComplete:addText, onCompleteParams: [id, tweet, itemName] });
+		scaleUp = TweenLite.to($(this), 1, { 'z-index':100, force3D:true, scale: 1 });
 
 	}, function(){
 
@@ -31,15 +31,15 @@ var animateItem = function(itemName, id, rotateDeg, tweet) {
 		scaleUp.reverse();
 		
 	});
+	addText(id, tweet, itemName)
 };
 
 var addText = function (id, tweet, itemName) {
-
 	var text = tweet.text.slice(0,150).replace("/\n/g", " ");
 	var name = tweet.user.screen_name;
 	var pic = tweet.user.profile_image_url;
 
-	$(id).on('click', function () {
+	$(id).click( function () {
 		var backSource = $("#"+itemName+"-template-back").html();
 		var backTemplate = Handlebars.compile(backSource);
 		var back = backTemplate({text,name,pic});
@@ -47,7 +47,7 @@ var addText = function (id, tweet, itemName) {
 		$(id+" .front").css("display","none");
 		$(id+" .back").append(back);
 
-		$(id).off('click');
+		$(id).unbind('click');
 		$(id).css('cursor', 'initial');
 	});
 };
