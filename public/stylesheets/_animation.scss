@@ -1,0 +1,36 @@
+@keyframes sway { 
+	0% { transform: rotate(0deg);  }
+	30% { transform: rotate(45deg);  }
+	60% { transform: rotate(-45deg);   }
+	100% { transform: rotate(45deg);  }
+}
+
+$flip-time: .5s;
+
+@mixin flip($start, $middle, $end) {
+    0% {
+        transform: rotateX($start);
+    }
+    50% {
+        transform: rotateX($middle);
+    }
+    100% {
+        transform: rotateX($end);
+    }
+}
+
+@keyframes flip90 {
+    @include flip(0deg,90deg,90deg);
+}
+
+@keyframes flipNeg90 {
+    @include flip(90deg,90deg,0deg);
+}
+
+@keyframes flip180 {
+    @include flip(0deg,90deg,180deg);
+}
+
+@keyframes flipNeg180 {
+    @include flip(180deg,90deg,0deg);
+}

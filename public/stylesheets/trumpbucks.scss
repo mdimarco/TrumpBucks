@@ -1,0 +1,43 @@
+
+.trump-buck {
+	border: 1em solid rgba(0,0,0,.2);
+	position: absolute;
+    top: 10em;    
+    left: 10em;
+    width: $buck-width;
+    height: $buck-height;
+    background-color: green;
+    transform: scale(.2);
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.trump-sign {
+	position: relative;
+    top: 3.5em;
+    text-align: center;
+    display: inline-block;
+    width: $sign-width;
+    height: $sign-height;
+    color: $trump-text-green;
+}
+
+.trump-pic {
+    background-image: url("media/trump.jpg");
+    background-size: $center-width;
+    background-repeat: no-repeat;
+    width: $center-width;
+    height: $pic-height;
+    border-radius: 10em;
+    position: relative;
+}
+
+.trump-text {
+    white-space: nowrap;
+    position: relative;
+    top: 3.7em;
+    left: -2.2em;
+    color: $trump-text-green;
+    font-family: cursive;
+    font-size: $text-size;
+}

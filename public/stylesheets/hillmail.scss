@@ -1,0 +1,40 @@
+
+
+
+.hill-mail {
+    .front {
+        width: $buck-height;
+        height: $buck-height; 
+        svg, .center-pic {
+            position: absolute;
+            transform-origin: 0% 0%;
+        }
+        svg {
+            padding-top: 50px;
+            fill: white;
+        }
+        .center-pic {
+            border-radius: 50%;
+            width: $center-pic-size;
+            height: $center-pic-size;
+            top: calc(50% - #{$center-pic-size - 5px});
+            left: calc(50% - #{$center-pic-size/2});
+            border: 1px solid #c4c4c4;
+            margin-top: 50px;
+            animation: flipNeg90 $flip-time/2;
+        }
+    }
+    &:hover {
+        .up-env {
+            transform: rotateX(180deg); 
+            animation: flip180 $flip-time;
+        }   
+        .center-pic {
+            animation: flip90 $flip-time forwards;
+        }
+    }
+}
+.up-env {
+    transform-origin: 0% 0%;
+    animation: flipNeg180 $flip-time/2;
+}

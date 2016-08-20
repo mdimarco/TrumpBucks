@@ -11,7 +11,7 @@ var dissapear = function (buck) {
 var animateItem = function(itemName, id, rotateDeg, tweet) {
 	var buck = $(id);
 
-	//Main animations
+	// //Main animations
 	var fall = TweenLite.to(buck, Math.round(Math.random()*10+5), { y:window.screen.height, onComplete: dissapear, onCompleteParams: [buck] });
 	var rotate = TweenLite.to(buck, 5, { rotation: "+="+rotateDeg, ease: Linear.easeNone });
 

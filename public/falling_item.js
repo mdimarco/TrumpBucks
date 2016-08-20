@@ -1,7 +1,7 @@
 
-
-var name = "trump-buck";
-var pref = "tb";
+var name = "hill-mail";
+// var name = "trump-buck";
+var pref = "hm";
 var seenTweets = {};
 var itemCounter = 0;
 //After every poll, move the max id back to avoid polling duplicates
@@ -66,5 +66,5 @@ function createItem(id) {
 	var buck = buckTemplate({id});
 	$("body").append(buck);
 	$("#"+id).css("left", Math.round( Math.random()*100-20)+"%");
-	$("#"+id).css("top", Math.round( Math.random()*200-250)+"px");
+	$("#"+id).css("top", Math.round( Math.random()*200-350)+"px");
 }

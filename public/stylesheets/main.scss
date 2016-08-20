@@ -4,6 +4,8 @@ $buck-height: 12em;
 $text-size: 25px;
 $tweet-text-size: 20px;
 
+$center-pic-size: 65px;
+
 $trump-text-green: #3FAD48;
 $black: #101010;
 $white: #fefefe;
@@ -19,11 +21,16 @@ $pic-size: 3em;
 $pic2-3: (2/3)*$pic-size;
 $pic1-3: (1/3)*$pic-size;
 
+@import "animation";
+@import "hillmail";
+@import "trumpbucks";
+
 body {
 	width: 100vw;
 	height: 100vh;
     min-height: 750px;
-	background:  url("../media/trumpwall.jpg") no-repeat center center fixed; 
+	// background:  url("../media/trumpwall.jpg") no-repeat center center fixed; 
+    background:  url("../media/hillaryemail.jpeg") no-repeat center center fixed; 
   	background-size: cover;
   	margin: 0;
     overflow-y: hidden;
@@ -44,35 +51,11 @@ body {
     z-index: 100;
 }
 
-
-
-
-.trump-buck {
-	border: 1em solid rgba(0,0,0,.2);
-	position: absolute;
+.falling-item {
+    position: absolute;
     z-index: 0;
-    top: 10em;    
-    left: 10em;
     display: inline-block;
-    width: $buck-width;
-    height: $buck-height;
-    background-color: green;
-    transform: scale(.2);
-    cursor: pointer;
-    overflow: hidden;
-    &:hover{
-    	transform: scale(1);
-    }
-}
-
-.trump-sign {
-	position: relative;
-    top: 3.5em;
-    text-align: center;
-    display: inline-block;
-    width: $sign-width;
-    height: $sign-height;
-    color: $trump-text-green;
+    transform: scale(.5);
 }
 
 .tweet-container {
@@ -81,25 +64,6 @@ body {
     font-size: 5px;
 }
 
-.trump-pic {
-	background-image: url("media/trump.jpg");
-    background-size: $center-width;
-    background-repeat: no-repeat;
-    width: $center-width;
-    height: $pic-height;
-    border-radius: 10em;
-    position: relative;
-}
-
-.trump-text {
-	white-space: nowrap;
-    position: relative;
-    top: 3.7em;
-    left: -2.2em;
-    color: $trump-text-green;
-    font-family: cursive;
-    font-size: $text-size;
-}
 
 .tweet-text {
 	text-align: center;
@@ -107,7 +71,6 @@ body {
     color: $white;
     float: left;
 }
-
 
 .tweet-pic {
     width: $pic-size;
