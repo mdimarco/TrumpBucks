@@ -1,7 +1,7 @@
 
-var name = "hill-mail";
-// var name = "trump-buck";
-var pref = "hm";
+// var name = "hill-mail";
+var name = "trump-buck";
+var pref = "tb";
 var seenTweets = {};
 var itemCounter = 0;
 //After every poll, move the max id back to avoid polling duplicates
